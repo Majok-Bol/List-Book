@@ -22,7 +22,9 @@ function add() {
 
       // Create delete button
       const deleteButton = document.createElement("button");
-      deleteButton.textContent = "Delete";
+      deleteButton.style.backgroundColor="aqua";
+      deleteButton.style.margin="1rem";
+      deleteButton.textContent = "DELETE";
       deleteButton.addEventListener("click", () => {
         listItems.remove();
       });
@@ -31,6 +33,7 @@ function add() {
       listItems.appendChild(deleteButton);
       // append it to the unordered list
       document.getElementById("myList").appendChild(listItems);
+
       //clear input field
       inputText.value = "";
     }
