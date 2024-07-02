@@ -16,24 +16,24 @@ function add() {
         "Please enter valid input";
     } else {
       document.getElementById("paragraph").textContent = "";
+      //create list
+      const listItems = document.createElement("li");
+      listItems.textContent = value;
+
+      // Create delete button
+      const deleteButton = document.createElement("button");
+      deleteButton.textContent = "Delete";
+      deleteButton.addEventListener("click", () => {
+        listItems.remove();
+      });
+
+      // Append delete button to list item
+      listItems.appendChild(deleteButton);
+      // append it to the unordered list
+      document.getElementById("myList").appendChild(listItems);
+      //clear input field
+      inputText.value = "";
     }
-    //create list
-    const listItems = document.createElement("li");
-    listItems.textContent = value;
-
-    // Create delete button
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.addEventListener("click", () => {
-      listItems.remove();
-    });
-
-    // Append delete button to list item
-    listItems.appendChild(deleteButton);
-    // append it to the unordered list
-    document.getElementById("myList").appendChild(listItems);
-    //clear input field
-    inputText.value = "";
   });
 }
 
