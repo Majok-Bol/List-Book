@@ -10,16 +10,26 @@ function add() {
   myButton.addEventListener("click", () => {
     // get input element value
     let inputText = document.getElementById("txt");
-    const value = inputText.value;
-    if (value.trim() === "") {
+    const value = inputText.value.trim();
+    if (value === "") {
       document.getElementById("paragraph").textContent =
         "Please enter valid input";
     } else {
-      document.getElementById("paragraph").textContent = inputText.value;
+      document.getElementById("paragraph").textContent = "";
     }
     //create list
     const listItems = document.createElement("li");
     listItems.textContent = value;
+
+    // Create delete button
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+      listItems.remove();
+    });
+
+    // Append delete button to list item
+    listItems.appendChild(deleteButton);
     // append it to the unordered list
     document.getElementById("myList").appendChild(listItems);
     //clear input field
@@ -27,15 +37,4 @@ function add() {
   });
 }
 
-function removeFunction() {
-  const button2 = document.getElementById("btn2");
-  button2.addEventListener("click", () => {
-    document.getElementById("myList");
-    //check if myList lastchild
-    if (myList.lastChild) {
-      myList.removeChild(myList.lastChild);
-    }
-  });
-}
 add();
-removeFunction();
