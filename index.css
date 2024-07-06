@@ -7,7 +7,15 @@ textarea,
 }
 #btn1{
     background-color: chocolate;
+
 }
 #myList{
     margin:2rem;
+}
+textarea{
+  padding:2rem;
+
+}
+.div{
+  text-align: center;
 }
