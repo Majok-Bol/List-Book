@@ -14,8 +14,14 @@ textarea,
 }
 textarea{
   padding:2rem;
+  width:50%;
+  height:50%;
 
 }
 .div{
+  text-align: center;
+}
+h1{
+  font-size: 1.2rem;
   text-align: center;
 }
