@@ -33,7 +33,7 @@ function addItemToList(value) {
 
   // Create delete button
   const deleteButton = document.createElement("button");
-  deleteButton.style.backgroundColor="aqua"
+  deleteButton.style.backgroundColor = "aqua";
   deleteButton.textContent = "Delete";
   deleteButton.addEventListener("click", () => {
     listItem.remove();
@@ -57,7 +57,7 @@ document.getElementById("btn1").addEventListener("click", () => {
     addItemToList(value);
     saveList();
     input.value = ""; // Clear input field
-    paragraph.textContent="";
+    paragraph.textContent = "";
   }
 });
 
