@@ -57,6 +57,7 @@ document.getElementById("btn1").addEventListener("click", () => {
     addItemToList(value);
     saveList();
     input.value = ""; // Clear input field
+    paragraph.textContent="";
   }
 });
 
