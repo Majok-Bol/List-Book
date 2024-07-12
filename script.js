@@ -8,9 +8,9 @@ const paragraph = document.getElementById("paragraph");
 function saveList() {
   const listItems = [];
   myList.querySelectorAll("li").forEach((li) => {
-   // Extract the text content of the list item excluding buttons
-   const itemText = li.firstChild.textContent.trim();
-   listItems.push(itemText);
+    // Extract the text content of the list item excluding buttons
+    const itemText = li.firstChild.textContent.trim();
+    listItems.push(itemText);
   });
   localStorage.setItem("myList", JSON.stringify(listItems));
 }
@@ -38,7 +38,10 @@ function addItemToList(valueInput) {
   const deleteButton = document.createElement("button");
   deleteButton.style.backgroundColor = "aqua";
   deleteButton.textContent = "Delete";
-
+  deleteButton.style.backgroundColor = "#DC3545";
+  deleteButton.style.width = "60px";
+  deleteButton.style.borderRadius = "1rem";
+  deleteButton.style.padding = "6px";
   deleteButton.addEventListener("click", () => {
     listItem.remove();
     saveList();
@@ -52,6 +55,11 @@ function addItemToList(valueInput) {
   // create edit button
   const editButton = document.createElement("button");
   editButton.textContent = "EDIT";
+  editButton.style.backgroundColor = "  #fcb3c7";
+  editButton.style.borderRadius = "1rem";
+  editButton.style.width = "60px";
+  editButton.style.padding = "6px";
+  editButton.style.cursor = "pointer";
   listItem.appendChild(editButton);
   //add event listener
   editButton.addEventListener("click", () => {
@@ -60,7 +68,13 @@ function addItemToList(valueInput) {
     // create new save button
     const newSaveButton = document.createElement("button");
     newSaveButton.textContent = "SAVE";
-    // clear existing list
+    newSaveButton.style.textAlign = "center";
+    newSaveButton.style.borderRadius = "1rem";
+    newSaveButton.style.borderColor = "black";
+    newSaveButton.style.backgroundColor = "#20c997";
+    newSaveButton.style.padding = "6px";
+    newSaveButton.style.width = "60px";
+    newSaveButton.style.cursor = "pointer";
     listItem.textContent = "";
     listItem.appendChild(createTextArea);
     listItem.appendChild(newSaveButton);
@@ -86,8 +100,7 @@ function addItemToList(valueInput) {
 document.getElementById("btn1").addEventListener("click", () => {
   const valueInput = input.value.trim();
   if (valueInput === "") {
-    document.getElementById("paragraph").textContent =
-      "";
+    document.getElementById("paragraph").textContent = "";
   } else {
     addItemToList(valueInput);
     saveList();
