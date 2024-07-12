@@ -26,12 +26,12 @@ function loadList() {
 }
 
 // Function to add an item to the list
-function addItemToList(value) {
+function addItemToList(valueInput) {
   // Create list item
   const listItem = document.createElement("li");
   // listItem.textContent = value;
   // Create text node for list item
-  const textNode = document.createTextNode(value);
+  const textNode = document.createTextNode(valueInput);
   listItem.appendChild(textNode);
 
   // Create delete button
@@ -84,12 +84,12 @@ function addItemToList(value) {
 
 // Add event listener to the SAVE button
 document.getElementById("btn1").addEventListener("click", () => {
-  const value = input.value.trim();
-  if (value === "") {
+  const valueInput = input.value.trim();
+  if (valueInput === "") {
     document.getElementById("paragraph").textContent =
       "Please enter valid input";
   } else {
-    addItemToList(value);
+    addItemToList(valueInput);
     saveList();
     input.value = ""; // Clear input field
     paragraph.textContent = "";
