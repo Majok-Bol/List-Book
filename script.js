@@ -1,3 +1,4 @@
+"use strict";
 // Select input element
 const input = document.getElementById("txt");
 const myList = document.getElementById("myList");
@@ -7,7 +8,9 @@ const paragraph = document.getElementById("paragraph");
 function saveList() {
   const listItems = [];
   myList.querySelectorAll("li").forEach((li) => {
-    listItems.push(li.textContent.replace("Delete", "").trim());
+   // Extract the text content of the list item excluding buttons
+   const itemText = li.firstChild.textContent.trim();
+   listItems.push(itemText);
   });
   localStorage.setItem("myList", JSON.stringify(listItems));
 }
@@ -26,7 +29,10 @@ function loadList() {
 function addItemToList(value) {
   // Create list item
   const listItem = document.createElement("li");
-  listItem.textContent = value;
+  // listItem.textContent = value;
+  // Create text node for list item
+  const textNode = document.createTextNode(value);
+  listItem.appendChild(textNode);
 
   // Create delete button
   const deleteButton = document.createElement("button");
@@ -50,7 +56,7 @@ function addItemToList(value) {
   //add event listener
   editButton.addEventListener("click", () => {
     const createTextArea = document.createElement("textarea");
-    createTextArea.value = listItem.firstChild.textContent;
+    createTextArea.value = textNode.textContent;
     // create new save button
     const newSaveButton = document.createElement("button");
     newSaveButton.textContent = "SAVE";
@@ -60,12 +66,19 @@ function addItemToList(value) {
     listItem.appendChild(newSaveButton);
     // add event listener
     newSaveButton.addEventListener("click", () => {
-      listItem.textContent = createTextArea.value;
+      textNode.textContent = createTextArea.value;
+      // clear existing list
+      listItem.textContent = "";
+      listItem.appendChild(textNode);
       //append buttons back
       listItem.appendChild(editButton);
       listItem.appendChild(deleteButton);
+      saveList();
     });
   });
+
+  // Append list item to the unordered list
+  myList.appendChild(listItem);
   saveList();
 }
 
