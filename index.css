@@ -1,0 +1,20 @@
+.div {
+  /* width: 80%; */
+  text-align: center;
+}
+h1 {
+  font-size: 3rem;
+  text-align: center;
+}
+textarea:hover {
+  border-color: #33ffb6;
+}
+
+textarea {
+  padding: 2rem;
+  /* height: 40%;
+  width: 80%; */
+}
+#btn1{
+    text-align: center;
+}

@@ -87,7 +87,7 @@ document.getElementById("btn1").addEventListener("click", () => {
   const valueInput = input.value.trim();
   if (valueInput === "") {
     document.getElementById("paragraph").textContent =
-      "Please enter valid input";
+      "";
   } else {
     addItemToList(valueInput);
     saveList();
