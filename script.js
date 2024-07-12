@@ -1,6 +1,3 @@
-"use strict";
-console.log("Hello World");
-
 // Select input element
 const input = document.getElementById("txt");
 const myList = document.getElementById("myList");
@@ -35,6 +32,7 @@ function addItemToList(value) {
   const deleteButton = document.createElement("button");
   deleteButton.style.backgroundColor = "aqua";
   deleteButton.textContent = "Delete";
+
   deleteButton.addEventListener("click", () => {
     listItem.remove();
     saveList();
@@ -45,6 +43,30 @@ function addItemToList(value) {
 
   // Append list item to the unordered list
   myList.appendChild(listItem);
+  // create edit button
+  const editButton = document.createElement("button");
+  editButton.textContent = "EDIT";
+  listItem.appendChild(editButton);
+  //add event listener
+  editButton.addEventListener("click", () => {
+    const createTextArea = document.createElement("textarea");
+    createTextArea.value = listItem.firstChild.textContent;
+    // create new save button
+    const newSaveButton = document.createElement("button");
+    newSaveButton.textContent = "SAVE";
+    // clear existing list
+    listItem.textContent = "";
+    listItem.appendChild(createTextArea);
+    listItem.appendChild(newSaveButton);
+    // add event listener
+    newSaveButton.addEventListener("click", () => {
+      listItem.textContent = createTextArea.value;
+      //append buttons back
+      listItem.appendChild(editButton);
+      listItem.appendChild(deleteButton);
+    });
+  });
+  saveList();
 }
 
 // Add event listener to the SAVE button
